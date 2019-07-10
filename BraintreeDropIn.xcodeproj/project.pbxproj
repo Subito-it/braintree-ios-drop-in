@@ -26,6 +26,8 @@
 		53E78BEB22248BFE000388D3 /* BTUIKLargeHipercardVectorArtView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E78BE922248BFE000388D3 /* BTUIKLargeHipercardVectorArtView.m */; };
 		53E78BEE22248FD9000388D3 /* BTUIKHiperVectorArtView.h in Headers */ = {isa = PBXBuildFile; fileRef = 53E78BEC22248FD9000388D3 /* BTUIKHiperVectorArtView.h */; };
 		53E78BEF22248FD9000388D3 /* BTUIKHiperVectorArtView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E78BED22248FD9000388D3 /* BTUIKHiperVectorArtView.m */; };
+		88A1CDDF22D61AF1005C96C7 /* SBTDropInViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 88A1CDDD22D61AF1005C96C7 /* SBTDropInViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		88A1CDE022D61AF1005C96C7 /* SBTDropInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A1CDDE22D61AF1005C96C7 /* SBTDropInViewController.m */; };
 		A03FC5AB215AD10B00E3DF95 /* BTUIKCardholderNameFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A03FC5A9215AD10B00E3DF95 /* BTUIKCardholderNameFormField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A03FC5AC215AD10B00E3DF95 /* BTUIKCardholderNameFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = A03FC5AA215AD10B00E3DF95 /* BTUIKCardholderNameFormField.m */; };
 		A50ED7A61D8AF8C400A78EF0 /* BTPaymentSelectionViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A50ED7A51D8AF8C400A78EF0 /* BTPaymentSelectionViewControllerTests.m */; };
@@ -280,6 +282,8 @@
 		53E78BEC22248FD9000388D3 /* BTUIKHiperVectorArtView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTUIKHiperVectorArtView.h; sourceTree = "<group>"; };
 		53E78BED22248FD9000388D3 /* BTUIKHiperVectorArtView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTUIKHiperVectorArtView.m; sourceTree = "<group>"; };
 		69624BD75D7A10A1C4C5B0F8 /* Pods-DropInDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DropInDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-DropInDemo/Pods-DropInDemo.release.xcconfig"; sourceTree = "<group>"; };
+		88A1CDDD22D61AF1005C96C7 /* SBTDropInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBTDropInViewController.h; sourceTree = "<group>"; };
+		88A1CDDE22D61AF1005C96C7 /* SBTDropInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBTDropInViewController.m; sourceTree = "<group>"; };
 		9053ABB714FF46965A04A3D0 /* libPods-DropInDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DropInDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E9A2DAB5BA53008228298F4 /* libPods-Tests-UnitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests-UnitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03FC5A9215AD10B00E3DF95 /* BTUIKCardholderNameFormField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTUIKCardholderNameFormField.h; sourceTree = "<group>"; };
@@ -827,6 +831,7 @@
 				039C17691FC4F1C000D5A3B5 /* BTDropInOverrides.h */,
 				039C176A1FC4F1C000D5A3B5 /* BTDropInOverrides.m */,
 				A56C41891D833568000DFFAB /* BTDropInController.m */,
+				88A1CDDE22D61AF1005C96C7 /* SBTDropInViewController.m */,
 				A56C418A1D833568000DFFAB /* BTDropInUIUtilities.h */,
 				A56C418B1D833568000DFFAB /* BTDropInUIUtilities.m */,
 				A56C418C1D833568000DFFAB /* BTPaymentSelectionViewController.m */,
@@ -864,6 +869,7 @@
 			isa = PBXGroup;
 			children = (
 				A56C41A51D8335C7000DFFAB /* BraintreeDropIn.h */,
+				88A1CDDD22D61AF1005C96C7 /* SBTDropInViewController.h */,
 				A56C41A61D8335C7000DFFAB /* BTCardFormViewController.h */,
 				A56C41A71D8335C7000DFFAB /* BTDropInBaseViewController.h */,
 				A56C41A81D8335C7000DFFAB /* BTDropInController.h */,
@@ -1072,6 +1078,7 @@
 				A56C419F1D8335BB000DFFAB /* BTDropInPaymentSeletionCell.h in Headers */,
 				A56C41A31D8335BB000DFFAB /* BTUIPaymentMethodCollectionViewCell.h in Headers */,
 				A56C41911D833568000DFFAB /* BTDropInUIUtilities.h in Headers */,
+				88A1CDDF22D61AF1005C96C7 /* SBTDropInViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1473,6 +1480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A56C41971D833597000DFFAB /* BTDropInRequest.m in Sources */,
+				88A1CDE022D61AF1005C96C7 /* SBTDropInViewController.m in Sources */,
 				A56C41A01D8335BB000DFFAB /* BTDropInPaymentSeletionCell.m in Sources */,
 				A56C41941D833568000DFFAB /* BTVaultManagementViewController.m in Sources */,
 				A56C41A41D8335BB000DFFAB /* BTUIPaymentMethodCollectionViewCell.m in Sources */,
