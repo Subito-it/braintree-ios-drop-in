@@ -261,7 +261,7 @@
         dropInRequest.payPalRequest = [[BTPayPalRequest alloc] initWithAmount:@"4.77"];
     }
 
-    BTDropInController *dropIn = [[BTDropInController alloc] initWithAuthorization:self.authorizationString request:dropInRequest handler:^(BTDropInController * _Nonnull dropInController, BTDropInResult * _Nullable result, NSError * _Nullable error) {
+    SBTDropInViewController *dropIn = [[SBTDropInViewController alloc] initWithAuthorization:self.authorizationString request:dropInRequest handler:^(BTDropInController * _Nonnull dropInController, BTDropInResult * _Nullable result, NSError * _Nullable error) {
         if (error) {
             self.progressBlock([NSString stringWithFormat:@"Error: %@", error.localizedDescription]);
             NSLog(@"Error: %@", error);
