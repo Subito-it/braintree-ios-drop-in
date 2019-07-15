@@ -31,3 +31,4 @@ FOUNDATION_EXPORT const unsigned char BraintreeUIKitVersionString[];
 #import "BTUIKCardExpiryFormat.h"
 #import "BTUIKVisualAssetType.h"
 #import "BTUIKSwitchFormField.h"
+#import "SBTAddCardButtonFormField.h"
