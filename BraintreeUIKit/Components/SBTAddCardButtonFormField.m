@@ -16,13 +16,16 @@
     CGSize size = CGSizeMake((radius * 2.0) + 1.0, (radius * 2.0) + 1.0);
     CGRect rect = CGRectMake(0.0, 0.0, size.width, size.height);
     
-    UIGraphicsImageRenderer *renderer = [[UIGraphicsImageRenderer alloc] initWithSize:size];
-    UIImage *image = [renderer imageWithActions:^(UIGraphicsImageRendererContext *context) {
-        CGContextRef contextRef = context.CGContext;
-        CGContextSetFillColorWithColor(contextRef, color.CGColor);
-        CGContextAddPath(contextRef, [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:radius].CGPath);
-        CGContextFillPath(contextRef);
-    }];
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, color.CGColor);
+    CGContextAddPath(context, [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:radius].CGPath);
+    CGContextFillPath(context);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
     
     UIEdgeInsets capInsets = UIEdgeInsetsMake(radius, radius, radius, radius);
     return [image resizableImageWithCapInsets:capInsets];
