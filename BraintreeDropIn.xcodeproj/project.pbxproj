@@ -34,6 +34,8 @@
 		53E78BEB22248BFE000388D3 /* BTUIKLargeHipercardVectorArtView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E78BE922248BFE000388D3 /* BTUIKLargeHipercardVectorArtView.m */; };
 		53E78BEE22248FD9000388D3 /* BTUIKHiperVectorArtView.h in Headers */ = {isa = PBXBuildFile; fileRef = 53E78BEC22248FD9000388D3 /* BTUIKHiperVectorArtView.h */; };
 		53E78BEF22248FD9000388D3 /* BTUIKHiperVectorArtView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E78BED22248FD9000388D3 /* BTUIKHiperVectorArtView.m */; };
+		8893B65922DC78C200CFBE42 /* SBTAddCardButtonFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = 8893B65722DC78C200CFBE42 /* SBTAddCardButtonFormField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8893B65A22DC78C200CFBE42 /* SBTAddCardButtonFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8893B65822DC78C200CFBE42 /* SBTAddCardButtonFormField.m */; };
 		A03FC5AB215AD10B00E3DF95 /* BTUIKCardholderNameFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A03FC5A9215AD10B00E3DF95 /* BTUIKCardholderNameFormField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A03FC5AC215AD10B00E3DF95 /* BTUIKCardholderNameFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = A03FC5AA215AD10B00E3DF95 /* BTUIKCardholderNameFormField.m */; };
 		A50ED7A61D8AF8C400A78EF0 /* BTPaymentSelectionViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A50ED7A51D8AF8C400A78EF0 /* BTPaymentSelectionViewControllerTests.m */; };
@@ -287,6 +289,8 @@
 		53E78BEC22248FD9000388D3 /* BTUIKHiperVectorArtView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTUIKHiperVectorArtView.h; sourceTree = "<group>"; };
 		53E78BED22248FD9000388D3 /* BTUIKHiperVectorArtView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTUIKHiperVectorArtView.m; sourceTree = "<group>"; };
 		69624BD75D7A10A1C4C5B0F8 /* Pods-DropInDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DropInDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-DropInDemo/Pods-DropInDemo.release.xcconfig"; sourceTree = "<group>"; };
+		8893B65722DC78C200CFBE42 /* SBTAddCardButtonFormField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBTAddCardButtonFormField.h; sourceTree = "<group>"; };
+		8893B65822DC78C200CFBE42 /* SBTAddCardButtonFormField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBTAddCardButtonFormField.m; sourceTree = "<group>"; };
 		9053ABB714FF46965A04A3D0 /* libPods-DropInDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DropInDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E9A2DAB5BA53008228298F4 /* libPods-Tests-UnitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests-UnitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03FC5A9215AD10B00E3DF95 /* BTUIKCardholderNameFormField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTUIKCardholderNameFormField.h; sourceTree = "<group>"; };
@@ -585,6 +589,7 @@
 				A52900E01D8903A600032220 /* BTUIKSecurityCodeFormField.m */,
 				D6C2F3332239917F00DFF7E5 /* BTUIKSwitchFormField.m */,
 				A52900E11D8903A600032220 /* BTUIKTextField.m */,
+				8893B65822DC78C200CFBE42 /* SBTAddCardButtonFormField.m */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -623,6 +628,7 @@
 			isa = PBXGroup;
 			children = (
 				A52901041D8903A600032220 /* BraintreeUIKit.h */,
+				8893B65722DC78C200CFBE42 /* SBTAddCardButtonFormField.h */,
 				A52901051D8903A600032220 /* BTUIKAppearance.h */,
 				A52901061D8903A600032220 /* BTUIKCardExpirationValidator.h */,
 				A52901071D8903A600032220 /* BTUIKCardExpiryFormat.h */,
@@ -1015,6 +1021,7 @@
 				A529019B1D8903A600032220 /* BTUIKExpiryFormField.h in Headers */,
 				A52901D81D8903A700032220 /* BTUIKUnionPayVectorArtView.h in Headers */,
 				A52901E31D8903A700032220 /* BTUIKVenmoWordmarkVectorArtView.h in Headers */,
+				8893B65922DC78C200CFBE42 /* SBTAddCardButtonFormField.h in Headers */,
 				A52901A51D8903A700032220 /* BTUIKSecurityCodeFormField.h in Headers */,
 				A52901AA1D8903A700032220 /* UIColor+BTUIK.h in Headers */,
 				A52901981D8903A600032220 /* BTUIKCardListLabel.h in Headers */,
@@ -1424,6 +1431,7 @@
 				A52901641D8903A600032220 /* BTUIKBarButtonItem.m in Sources */,
 				A52901FA1D8903A700032220 /* BTUIKLargeJCBVectorArtView.m in Sources */,
 				A52901F71D8903A700032220 /* BTUIKLargeDiscoverVectorArtView.m in Sources */,
+				8893B65A22DC78C200CFBE42 /* SBTAddCardButtonFormField.m in Sources */,
 				A52901B61D8903A700032220 /* BTUIKCoinbaseMonogramCardView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
