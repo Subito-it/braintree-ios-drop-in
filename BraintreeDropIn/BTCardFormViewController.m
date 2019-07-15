@@ -337,6 +337,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionAllowAnimatedContent|UIViewAnimationOptionBeginFromCurrentState animations:^{
             self.cardNumberHeader.hidden = !collapsed;
+            self.cardNumberFooter.hidden = !collapsed;
             self.cardholderNameField.hidden = (self.dropInRequest.cardholderNameSetting == BTFormFieldDisabled) || collapsed;
             self.expirationDateField.hidden = collapsed;
             self.securityCodeField.hidden = ![self.requiredFields containsObject:self.securityCodeField] || collapsed;
