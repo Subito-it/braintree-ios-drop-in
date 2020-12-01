@@ -303,7 +303,19 @@ static BOOL _vaultedCardAppearAnalyticSent = NO;
             // no action
         } else {
             self.vaultedPaymentsEditButton.hidden = !self.dropInRequest.vaultManager;
-            self.paymentMethodNonces = [paymentMethodNonces copy];
+            
+            NSMutableArray<BTPaymentMethodNonce *> *enabledPaymentMethodNonces = [NSMutableArray array];
+            for (BTPaymentMethodNonce *nonce in paymentMethodNonces) {
+                BOOL isPayPal = [nonce isKindOfClass:[BTPayPalAccountNonce class]];
+                BOOL isPayPalDisabled = self.dropInRequest.paypalDisabled;
+                if (isPayPal && isPayPalDisabled) {
+                    continue;
+                }
+                
+                [enabledPaymentMethodNonces addObject:nonce];
+            }
+            self.paymentMethodNonces = enabledPaymentMethodNonces;
+            
             if (completionBlock) {
                 completionBlock();
             }
