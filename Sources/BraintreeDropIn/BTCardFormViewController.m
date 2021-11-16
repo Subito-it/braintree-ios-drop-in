@@ -11,6 +11,7 @@
 #import "BTUIKCardListLabel.h"
 #import "BTUIKViewUtil.h"
 #import "BTDropInLocalization_Internal.h"
+#import "SBTAddCardButtonFormField.h"
 
 #if __has_include(<Braintree/BraintreeCore.h>) // CocoaPods
 #import <Braintree/BraintreeCard.h>
@@ -24,11 +25,12 @@
 #import <BraintreeUnionPay/BraintreeUnionPay.h>
 #endif
 
-@interface BTCardFormViewController ()
+@interface BTCardFormViewController () <SBTAddCardButtonFormFieldDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *scrollViewContentWrapper;
 @property (nonatomic, strong) UIStackView *stackView;
+@property (nonatomic, strong) SBTAddCardButtonFormField *addCardField;
 @property (nonatomic, strong, readwrite) BTUIKCardNumberFormField *cardNumberField;
 @property (nonatomic, strong, readwrite) BTUIKCardholderNameFormField *cardholderNameField;
 @property (nonatomic, strong, readwrite) BTUIKExpiryFormField *expirationDateField;
@@ -186,6 +188,8 @@
     self.mobileCountryCodeField.delegate = self;
     self.mobilePhoneField = [[BTUIKMobileNumberFormField alloc] init];
     self.mobilePhoneField.delegate = self;
+    self.addCardField = [[SBTAddCardButtonFormField alloc] init];
+    self.addCardField.delegate = self;
     
     self.cardNumberHeader = [BTDropInUIUtilities newStackView];
     self.cardNumberHeader.layoutMargins = UIEdgeInsetsMake(0, [BTUIKAppearance verticalFormSpace], 0, [BTUIKAppearance verticalFormSpace]);
@@ -199,7 +203,7 @@
     [BTDropInUIUtilities addSpacerToStackView:self.cardNumberHeader beforeView:cardNumberHeaderLabel size: [BTUIKAppearance verticalFormSpace]];
     [self.stackView addArrangedSubview:self.cardNumberHeader];
 
-    self.formFields = @[self.cardNumberField, self.cardholderNameField, self.expirationDateField, self.securityCodeField, self.postalCodeField, self.mobileCountryCodeField, self.mobilePhoneField];
+    self.formFields = @[self.cardNumberField, self.cardholderNameField, self.expirationDateField, self.securityCodeField, self.postalCodeField, self.mobileCountryCodeField, self.mobilePhoneField, self.addCardField];
 
     for (BTUIKFormField *formField in self.formFields) {
         [self.stackView addArrangedSubview:formField];
@@ -213,6 +217,7 @@
     self.postalCodeField.hidden = YES;
     self.mobileCountryCodeField.hidden = YES;
     self.mobilePhoneField.hidden = YES;
+    self.addCardField.hidden = YES;
 
     // Privacy Policy label
     UILabel *privacyPolicyLabel = [[UILabel alloc] init];
@@ -229,6 +234,9 @@
     [BTDropInUIUtilities addSpacerToStackView:self.stackView beforeView:self.cardNumberField size: [BTUIKAppearance verticalFormSpace]];
     [BTDropInUIUtilities addSpacerToStackView:self.stackView beforeView:self.cardholderNameField size: [BTUIKAppearance verticalFormSpace]];
     [BTDropInUIUtilities addSpacerToStackView:self.stackView beforeView:self.mobileCountryCodeField size: [BTUIKAppearance verticalFormSpace]];
+
+    // Spacing between add card field and privacy policy label
+    [self.stackView setCustomSpacing:[BTUIKAppearance verticalFormSpaceTight] afterView:self.addCardField];
 
     self.cardNumberFooter = [BTDropInUIUtilities newStackView];
     self.cardNumberFooter.layoutMargins = UIEdgeInsetsMake(0, [BTUIKAppearance verticalFormSpace], 0, [BTUIKAppearance verticalFormSpace]);
@@ -356,6 +364,7 @@
             self.mobilePhoneField.hidden = ![self.requiredFields containsObject:self.mobilePhoneField] || collapsed;
             self.enrollmentFooter.hidden = self.mobilePhoneField.hidden;
             self.shouldVaultCardSwitchField.hidden = ![self shouldDisplaySaveCardToggle] || collapsed;
+            self.addCardField.hidden = self.collapsed;
             [self updateFormBorders];
         } completion:^(__unused BOOL finished) {
             self.cardNumberFooter.hidden = !collapsed;
@@ -368,9 +377,9 @@
             self.mobilePhoneField.hidden = ![self.requiredFields containsObject:self.mobilePhoneField] || collapsed;
             self.enrollmentFooter.hidden = self.mobilePhoneField.hidden;
             self.shouldVaultCardSwitchField.hidden = ![self shouldDisplaySaveCardToggle] || collapsed;
+            self.addCardField.hidden = self.collapsed;
             
             [self updateFormBorders];
-            [self updateSubmitButton];
         }];
     });
 }
@@ -383,15 +392,11 @@
 
 - (void)resetForm {
     self.navigationItem.leftBarButtonItem = [[BTUIKBarButtonItem alloc] initWithTitle:BTDropInLocalizedString(CANCEL_ACTION) style:UIBarButtonItemStylePlain target:self action:@selector(cancelTapped)];
-    BTUIKBarButtonItem *addButton = [[BTUIKBarButtonItem alloc] initWithTitle:BTDropInLocalizedString(ADD_CARD_ACTION) style:UIBarButtonItemStylePlain target:self action:@selector(tokenizeCard)];
-    addButton.bold = YES;
-    self.navigationItem.rightBarButtonItem = addButton;
-    
-    self.navigationItem.rightBarButtonItem.enabled = NO;
-    self.navigationItem.rightBarButtonItem.accessibilityHint = BTDropInLocalizedString(REVIEW_AND_TRY_AGAIN);
     
     for (BTUIKFormField *formField in self.formFields) {
-        formField.text = @"";
+        if ([formField respondsToSelector:@selector(setText:)]) {
+            formField.text = @"";
+        }
         formField.hidden = YES;
     }
     // Using ivar so that setter is not called
@@ -476,16 +481,6 @@
         }
     }];
     return isFormValid;
-}
-
-- (void)updateSubmitButton {
-    if (!self.collapsed && [self isFormValid]) {
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-        self.navigationItem.rightBarButtonItem.accessibilityHint = nil;
-    } else {
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-        self.navigationItem.rightBarButtonItem.accessibilityHint = BTDropInLocalizedString(REVIEW_AND_TRY_AGAIN);
-    }
 }
 
 - (void)advanceFocusFromField:(BTUIKFormField *)currentField {
@@ -588,9 +583,9 @@
     spinner.activityIndicatorViewStyle = [BTUIKAppearance sharedInstance].activityIndicatorViewStyle;
     [spinner startAnimating];
 
-    UIBarButtonItem *addCardButton = self.navigationItem.rightBarButtonItem;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     self.view.userInteractionEnabled = NO;
+    [self.addCardField setEnabled:NO];
     __block UINavigationController *navController = self.navigationController;
 
 #pragma clang diagnostic push
@@ -600,8 +595,9 @@
 #pragma clang diagnostic pop
         dispatch_async(dispatch_get_main_queue(), ^{
             self.view.userInteractionEnabled = YES;
+            [self.addCardField setEnabled:YES];
 
-            self.navigationItem.rightBarButtonItem = addCardButton;
+            self.navigationItem.rightBarButtonItem = nil;
 
             if (error != nil) {
                 NSString *message = BTDropInLocalizedString(REVIEW_AND_TRY_AGAIN);
@@ -634,6 +630,7 @@
         
         currentViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
         self.view.userInteractionEnabled = NO;
+        [self.addCardField setEnabled:NO];
     });
     
     [cardClient enrollCard:cardRequest completion:^(NSString * _Nullable enrollmentID, BOOL smsCodeRequired, NSError * _Nullable error) {
@@ -684,6 +681,7 @@
                 
                 enrollmentController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
                 self.view.userInteractionEnabled = NO;
+                [self.addCardField setEnabled:NO];
             });
             
 #pragma clang diagnostic push
@@ -695,6 +693,7 @@
 #pragma clang diagnostic pop
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.view.userInteractionEnabled = YES;
+                    [self.addCardField setEnabled:YES];
                     enrollmentController.navigationItem.rightBarButtonItem = originalRightBarButtonItem;
                     if (error) {
                         [enrollmentController smsErrorHidden:NO];
@@ -770,8 +769,6 @@
 }
 
 - (void)formFieldDidChange:(BTUIKFormField *)formField {
-    [self updateSubmitButton];
-    
     // When focus moves from card number field, display the error state if the value in the field is invalid
     if (formField == self.cardNumberField && self.cardNumberField.state == BTUIKCardNumberFormFieldStateDefault) {
         [self cardNumberErrorHidden:self.cardNumberField.displayAsValid];
@@ -821,6 +818,22 @@
 
 - (BOOL)textFieldShouldReturn:(__unused UITextField *)textField {
     return YES;
+}
+
+#pragma mark SBTAddCardButtonFormFieldDelegate
+
+- (void)addCardFieldTapped:(SBTAddCardButtonFormField __unused *)field {
+    if ([self isFormValid]) {
+        [self tokenizeCard];
+    } else {
+        NSString *alertTitle = @"Attenzione";
+        NSString *alertMessage = @"Controlla di aver compilato tutti i campi correttamente";
+        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:alertAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 @end
