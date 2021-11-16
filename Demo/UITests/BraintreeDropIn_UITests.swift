@@ -375,7 +375,8 @@ class BraintreeDropIn_CardholderNameRequired_UITests: XCTestCase {
         postalCodeField.forceTapElement()
         postalCodeField.typeText("12345")
 
-        XCTAssertFalse(app.buttons["Add Card"].isEnabled)
+        app.buttons["Add Card"].forceTapElement()
+        waitForElementToBeHittable(app.staticTexts["Attenzione"])
     }
 
     func testDropIn_cardholderNameRequired_canAddCardWithName() {
