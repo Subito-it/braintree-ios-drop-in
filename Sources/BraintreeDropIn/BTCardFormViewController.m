@@ -19,10 +19,10 @@
 #import <Braintree/BraintreePaymentFlow.h>
 #import <Braintree/BraintreeUnionPay.h>
 #else
-#import <BraintreeCard/BraintreeCard.h>
-#import <BraintreeCore/BraintreeCore.h>
-#import <BraintreePaymentFlow/BraintreePaymentFlow.h>
-#import <BraintreeUnionPay/BraintreeUnionPay.h>
+@import BraintreeCard;
+@import BraintreeCore;
+@import BraintreePaymentFlow;
+@import BraintreeUnionPay;
 #endif
 
 @interface BTCardFormViewController () <SBTAddCardButtonFormFieldDelegate>

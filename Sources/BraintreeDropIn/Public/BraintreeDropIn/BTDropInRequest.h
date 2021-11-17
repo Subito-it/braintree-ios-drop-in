@@ -6,10 +6,10 @@
 #import <Braintree/BTVenmoRequest.h>
 #import <Braintree/BTThreeDSecureRequest.h>
 #else
-#import <BraintreeCore/BTPostalAddress.h>
-#import <BraintreePayPal/BTPayPalRequest.h>
-#import <BraintreeVenmo/BTVenmoRequest.h>
-#import <BraintreeThreeDSecure/BTThreeDSecureRequest.h>
+@import BraintreeCore;
+@import BraintreePayPal;
+@import BraintreeThreeDSecure;
+@import BraintreeVenmo;
 #endif
 
 NS_ASSUME_NONNULL_BEGIN

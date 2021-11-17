@@ -8,7 +8,7 @@
 #if __has_include(<Braintree/BraintreeCore.h>) // CocoaPods
 #import <Braintree/BraintreeCore.h>
 #else
-#import <BraintreeCore/BraintreeCore.h>
+@import BraintreeCore;
 #endif
 
 // Import PayPalDataCollector (Swift) module

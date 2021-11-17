@@ -9,8 +9,8 @@
 #import <Braintree/BraintreeCard.h>
 #import <Braintree/BraintreeCore.h>
 #else
-#import <BraintreeCard/BraintreeCard.h>
-#import <BraintreeCore/BraintreeCore.h>
+@import BraintreeCard;
+@import BraintreeCore;
 #endif
 
 @interface BTVaultManagementViewController ()

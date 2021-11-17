@@ -9,13 +9,10 @@
 #import <Braintree/BTApplePayCardNonce.h>
 #import <Braintree/BTConfiguration+ApplePay.h>
 #else
-#import <BraintreeCard/BTCardNonce.h>
-#import <BraintreePayPal/BTPayPalAccountNonce.h>
-#import <BraintreePayPal/BTConfiguration+PayPal.h>
-#import <BraintreeVenmo/BTVenmoAccountNonce.h>
-#import <BraintreeVenmo/BTConfiguration+Venmo.h>
-#import <BraintreeApplePay/BTApplePayCardNonce.h>
-#import <BraintreeApplePay/BTConfiguration+ApplePay.h>
+@import BraintreeApplePay;
+@import BraintreeCard;
+@import BraintreePayPal;
+@import BraintreeVenmo;
 #endif
 
 @implementation BTPaymentMethodNonce (DropIn)

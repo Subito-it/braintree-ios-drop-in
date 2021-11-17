@@ -15,11 +15,11 @@
 #import <Braintree/BTThreeDSecureResult.h>
 #import <Braintree/BraintreeUnionPay.h>
 #else
-#import <BraintreeCard/BraintreeCard.h>
-#import <BraintreeCore/BraintreeCore.h>
-#import <BraintreePaymentFlow/BraintreePaymentFlow.h>
-#import <BraintreeThreeDSecure/BTThreeDSecureResult.h>
-#import <BraintreeUnionPay/BraintreeUnionPay.h>
+@import BraintreeCard;
+@import BraintreeCore;
+@import BraintreePaymentFlow;
+@import BraintreeThreeDSecure;
+@import BraintreeUnionPay;
 #endif
 
 #define BT_ANIMATION_SLIDE_SPEED 0.35

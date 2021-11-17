@@ -5,7 +5,7 @@
 #if __has_include(<Braintree/BraintreeCore.h>) // CocoaPods
 #import <Braintree/BTVenmoDriver.h>
 #else
-#import <BraintreeVenmo/BTVenmoDriver.h>
+@import BraintreeVenmo;
 #endif
 
 @class BTPaymentMethodNonce;

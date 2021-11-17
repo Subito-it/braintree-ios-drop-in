@@ -16,10 +16,10 @@
 #import <Braintree/BraintreeVenmo.h>
 #import <Braintree/BraintreeApplePay.h>
 #else
-#import <BraintreeCard/BraintreeCard.h>
-#import <BraintreePayPal/BraintreePayPal.h>
-#import <BraintreeVenmo/BraintreeVenmo.h>
-#import <BraintreeApplePay/BraintreeApplePay.h>
+@import BraintreeApplePay;
+@import BraintreeCard;
+@import BraintreePayPal;
+@import BraintreeVenmo;
 #endif
 
 #define SAVED_PAYMENT_METHODS_COLLECTION_SPACING 6

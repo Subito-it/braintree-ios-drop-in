@@ -3,7 +3,7 @@
 #if __has_include(<Braintree/BraintreeCore.h>) // CocoaPods
 #import <Braintree/BTPaymentMethodNonce.h>
 #else
-#import <BraintreeCore/BTPaymentMethodNonce.h>
+@import BraintreeCore;
 #endif
 
 @class BTUIKPaymentOptionCardView;

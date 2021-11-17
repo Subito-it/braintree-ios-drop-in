@@ -2,8 +2,9 @@
 
 #import "BTPaymentSelectionViewController.h"
 #import "BTUIKAppearance.h"
-#import <BraintreeCore/BTConfiguration.h>
 #import "UnitTests-Swift.h"
+
+@import BraintreeCore;
 
 @interface BTPaymentSelectionViewController ()
 @property (nonatomic, strong) NSArray *paymentOptionsData;

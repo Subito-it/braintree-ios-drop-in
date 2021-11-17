@@ -11,9 +11,9 @@ FOUNDATION_EXPORT const unsigned char BraintreeDropInVersionString[];
 #import <Braintree/BraintreeUnionPay.h>
 #import <Braintree/BraintreeVenmo.h>
 #else
-#import <BraintreeApplePay/BraintreeApplePay.h>
-#import <BraintreeUnionPay/BraintreeUnionPay.h>
-#import <BraintreeVenmo/BraintreeVenmo.h>
+@import BraintreeApplePay;
+@import BraintreeUnionPay;
+@import BraintreeVenmo;
 #endif
 
 #import <BraintreeDropIn/BTDropInController.h>
