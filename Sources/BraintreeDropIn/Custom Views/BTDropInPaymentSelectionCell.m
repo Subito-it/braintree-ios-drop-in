@@ -27,7 +27,7 @@
 
         self.label = [[UILabel alloc] init];
         [BTUIKAppearance styleLabelPrimary:self.label];
-        self.label.numberOfLines = 2;
+        self.label.numberOfLines = 0;
         self.label.translatesAutoresizingMaskIntoConstraints = NO;
         [self.labelContainer addArrangedSubview:self.label];
 
