@@ -41,7 +41,7 @@
 "OTHER_LABEL"                               = "Altro";
 "CREDIT_OR_DEBIT_CARD_LABEL"                = "Carta di credito o di debito";
 "RECENT_LABEL"                              = "Recenti";
-"SELECT_PAYMENT_LABEL"                      = "Seleziona metodo di pagamento";
+"SELECT_PAYMENT_LABEL"                      = "Metodo di pagamento";
 
 "CONFIRM_ENROLLMENT_LABEL"                  = "Conferma registrazione";
 "CONFIRM_ACTION"                            = "Conferma";
