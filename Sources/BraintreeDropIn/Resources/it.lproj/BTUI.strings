@@ -40,7 +40,7 @@
 "MONTH_LABEL"                               = "Mese";
 
 "OTHER_LABEL"                               = "Altro";
-"CREDIT_OR_DEBIT_CARD_LABEL"                = "Carta di credito o di debito";
+"CREDIT_OR_DEBIT_CARD_LABEL"                = "Carta di credito o di debito (bancomat)";
 "RECENT_LABEL"                              = "Recenti";
 "SELECT_PAYMENT_LABEL"                      = "Metodo di pagamento";
 
