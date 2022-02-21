@@ -52,6 +52,7 @@
     originalRequest.vaultManager = YES;
     originalRequest.vaultCard = NO;
     originalRequest.allowVaultCardOverride = YES;
+    originalRequest.vaultedPaypalAccountsDisabled = YES;
 
     BTDropInRequest *copiedRequest = [originalRequest copy];
     
@@ -67,6 +68,7 @@
     XCTAssertEqual(originalRequest.vaultManager, copiedRequest.vaultManager);
     XCTAssertEqual(originalRequest.vaultCard, copiedRequest.vaultCard);
     XCTAssertEqual(originalRequest.allowVaultCardOverride, copiedRequest.allowVaultCardOverride);
+    XCTAssertEqual(originalRequest.vaultedPaypalAccountsDisabled, copiedRequest.vaultedPaypalAccountsDisabled);
 
     XCTAssertEqual(originalRequest.threeDSecureRequest, copiedRequest.threeDSecureRequest);
     XCTAssertEqual(BTThreeDSecureVersion2, copiedRequest.threeDSecureRequest.versionRequested);
