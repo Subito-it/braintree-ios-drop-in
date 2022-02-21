@@ -37,7 +37,7 @@
 - (BOOL)shouldDisplayVaultedNonceForRequest:(BTDropInRequest *)request config:(BTConfiguration *)configuration {
     if ([self isKindOfClass:BTCardNonce.class] && (request.cardDisabled || configuration.supportedCardTypes.count == 0)) {
         return NO;
-    } else if ([self isKindOfClass:BTPayPalAccountNonce.class] && (request.paypalDisabled || !configuration.isPayPalEnabled)) {
+    } else if ([self isKindOfClass:BTPayPalAccountNonce.class] && (request.paypalDisabled || request.vaultedPaypalAccountsDisabled || !configuration.isPayPalEnabled)) {
         return NO;
     } else if ([self isKindOfClass:BTVenmoAccountNonce.class] && (request.venmoDisabled || !configuration.isVenmoEnabled)) {
         return NO;
