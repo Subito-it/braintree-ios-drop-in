@@ -32,6 +32,7 @@
     request.vaultManager = self.vaultManager;
     request.vaultCard = self.vaultCard;
     request.allowVaultCardOverride = self.allowVaultCardOverride;
+    request.vaultedPaypalAccountsDisabled = self.vaultedPaypalAccountsDisabled;
     return request;
 }
 
