@@ -235,6 +235,9 @@
     [BTDropInUIUtilities addSpacerToStackView:self.stackView beforeView:self.cardholderNameField size: [BTUIKAppearance verticalFormSpace]];
     [BTDropInUIUtilities addSpacerToStackView:self.stackView beforeView:self.mobileCountryCodeField size: [BTUIKAppearance verticalFormSpace]];
 
+    // Spacing between add card field and privacy policy label
+    [self.stackView setCustomSpacing:[BTUIKAppearance verticalFormSpaceTight] afterView:self.addCardField];
+
     self.cardNumberFooter = [BTDropInUIUtilities newStackView];
     self.cardNumberFooter.layoutMargins = UIEdgeInsetsMake(0, [BTUIKAppearance verticalFormSpace], 0, [BTUIKAppearance verticalFormSpace]);
     self.cardNumberFooter.layoutMarginsRelativeArrangement = true;
